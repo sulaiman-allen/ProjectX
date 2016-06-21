@@ -17,9 +17,8 @@ Catalog.config(($routeProvider) => {
     controllerAs: 'main',
     templateUrl: '/index.html'
   });
-
 })
-.controller('MainCtrl', function($timeout, TestJson) { 
+.controller('MainCtrl', function($timeout) { 
 	const main = this;
 
 	firebase.database().ref('/').on('value', (snap) => {
@@ -29,8 +28,6 @@ Catalog.config(($routeProvider) => {
 	  console.log("main.test.media = ", main.test.media);
 	  $timeout();
 	});
-
-
 })
 .service('TestJson', function($http) {
 
@@ -42,5 +39,4 @@ Catalog.config(($routeProvider) => {
 		  x(data);
 		});
 	};
-
 });

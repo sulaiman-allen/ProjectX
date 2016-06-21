@@ -9,16 +9,32 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body ng-app='catalog'>
-    <h1>Main Heading</h1>
-    <div class="card-columns" ng-controller='MainCtrl as main'>
-    		<!-- {{main.test}} -->
-    		<div ng-repeat="media in main.test.media" class="card card-block">
-      			<img ng-src="{{media.items[0].images[media.items[0].images.length -1]}}">
-            <p>Title: {{media.items[0].title}}</p>
-            <p>Description: {{media.items[0].description}}</p>
-            <p>This is just some garbage text to test the layout of this card element. I am just doing this as
-            an act of desperation because I need to see where the lines lie.</p>
-    		</div>
+    <header id="header" class="">
+      <nav class="headerNav">
+        <ul>
+          <li><h1>NESTLR</h1>
+        </ul>
+        <ul>
+          <li><a href="" title="Books"></a>Books</li>
+        </ul>
+        <ul>
+          <li><a href="" title="Music"></a>Music</li>
+        </ul>
+        <ul>
+          <li><a href="" title="Games"></a>Games</li>
+        </ul>
+      </nav>
+      
+    </header><!-- /header -->
+    <div class="card-columns mainContent" ng-controller='MainCtrl as main'>
+  		<!-- {{main.test}} -->
+  		<div ng-repeat="media in main.test.media" class="card card-block">
+  			<img class="cardImg" ng-src="{{media.items[0].images[media.items[0].images.length -1]}}">
+        <p>Title: {{media.items[0].title}}</p>
+        <p>Description: {{media.items[0].description}}</p>
+        <p>This is just some garbage text to test the layout of this card element. I am just doing this as
+        an act of desperation because I need to see where the lines lie.</p>
+  		</div>
     </div>
 		<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
 		<script src="bower_components/angular/angular.min.js"></script>
@@ -27,3 +43,5 @@
 		<script src="javascripts/main.js"></script>
 	</body>
 </html>
+
+477t67Glorb

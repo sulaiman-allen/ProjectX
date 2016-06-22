@@ -28,9 +28,19 @@ Catalog.config(($routeProvider) => {
 	  console.log("main.test.media = ", main.test.media);
 	  $timeout();
 	});
+
+	main.isOwned = function(id) {
+
+		console.log(`inside isOwned. id = ${id}`);
+
+		firebase.database().ref(`/media/${id}`).child("owned").set(true);
+
+	};
+
+
 })
 .service('myAuth', function() {
-	
+
 
 }) 
 .service('TestJson', function($http) {

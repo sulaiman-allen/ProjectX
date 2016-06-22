@@ -29,11 +29,19 @@
     <div class="card-columns mainContent" ng-controller='MainCtrl as main'>
   		<!-- {{main.test}} -->
   		<div ng-repeat="media in main.test.media" class="card card-block">
-  			<img class="cardImg" ng-src="{{media.items[0].images[media.items[0].images.length -1]}}">
-        <p>Title: {{media.items[0].title}}</p>
-        <p ng-if="media.items[0].description">Description: {{media.items[0].description}}</p>
+  			<img class="cardImg" ng-src="{{media.images[media.images.length -1]}}">
+        <p>Title: {{media.title}}</p>
+        <p ng-if="media.description">Description: {{media.description}}</p>
+        <div>
+          <p ng-if="!media.owned">
+        </div>
         <p>This is just some garbage text to test the layout of this card element. I am just doing this as
         an act of desperation because I need to see where the lines lie.</p>
+        <div>
+          <button class="btn btn-danger">Delete</button>
+          <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
+           ng-click="main.isOwned(media.firebaseID)"> Owned<br>
+        </div>
   		</div>
     </div>
 		<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>

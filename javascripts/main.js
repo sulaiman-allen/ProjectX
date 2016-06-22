@@ -29,12 +29,16 @@ Catalog.config(($routeProvider) => {
 	  $timeout();
 	});
 
+
+	// Onclick event for setting the ownership of an item true or false in firebase
 	main.isOwned = function(id, value) {
 
-		console.log(`inside isOwned. id = ${id}`);
-
 		firebase.database().ref(`/media/${id}`).child("owned").set(value);
+	};
 
+	main.deleteItem = function(id) {
+
+		firebase.database().ref(`/media`).child(id).set(null);
 	};
 
 

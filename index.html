@@ -38,7 +38,7 @@
         <p>This is just some garbage text to test the layout of this card element. I am just doing this as
         an act of desperation because I need to see where the lines lie.</p>
         <div>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
           <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
            ng-click="main.isOwned(media.firebaseID, media.owned)"> Owned<br>
         </div>

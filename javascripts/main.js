@@ -29,6 +29,10 @@ Catalog.config(($routeProvider) => {
 	  $timeout();
 	});
 })
+.service('myAuth', function() {
+	
+
+}) 
 .service('TestJson', function($http) {
 
 	const test = this;

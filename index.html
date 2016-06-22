@@ -31,7 +31,7 @@
   		<div ng-repeat="media in main.test.media" class="card card-block">
   			<img class="cardImg" ng-src="{{media.items[0].images[media.items[0].images.length -1]}}">
         <p>Title: {{media.items[0].title}}</p>
-        <p>Description: {{media.items[0].description}}</p>
+        <p ng-if="media.items[0].description">Description: {{media.items[0].description}}</p>
         <p>This is just some garbage text to test the layout of this card element. I am just doing this as
         an act of desperation because I need to see where the lines lie.</p>
   		</div>

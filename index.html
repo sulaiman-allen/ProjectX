@@ -41,7 +41,15 @@
           <button class="btn btn-danger" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
           <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
            ng-click="main.isOwned(media.firebaseID, media.owned)"> Owned<br>
-        </div>
+           <select ng-model="media.mediaType">
+             <option value="Book">Book</option>
+             <option value="Music">Music</option>
+             <option value="Movie">Movie</option>
+             <option value="Game">Game</option>
+             <option value="Product">Product</option>
+           </select>
+          <button class="btn btn-primary" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button>
+       </div>
   		</div>
     </div>
 		<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>

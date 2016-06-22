@@ -36,9 +36,15 @@ Catalog.config(($routeProvider) => {
 		firebase.database().ref(`/media/${id}`).child("owned").set(value);
 	};
 
+	// Onclick event for deleting the item from the database
 	main.deleteItem = function(id) {
 
 		firebase.database().ref(`/media`).child(id).set(null);
+	};
+
+	main.setType = function(id, value) {
+
+		firebase.database().ref(`/media/${id}`).child("mediaType").set(value);
 	};
 
 

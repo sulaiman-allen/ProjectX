@@ -29,11 +29,11 @@ Catalog.config(($routeProvider) => {
 	  $timeout();
 	});
 
-	main.isOwned = function(id) {
+	main.isOwned = function(id, value) {
 
 		console.log(`inside isOwned. id = ${id}`);
 
-		firebase.database().ref(`/media/${id}`).child("owned").set(true);
+		firebase.database().ref(`/media/${id}`).child("owned").set(value);
 
 	};
 

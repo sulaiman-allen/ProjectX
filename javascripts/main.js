@@ -11,12 +11,23 @@ Catalog.config(($routeProvider) => {
     storageBucket: "catalogr-52a59.appspot.com",
   });
 
+  // $routeProvider.otherwise({
+  //   controller: 'AuthCtrl',
+  // 	redirectTo: '/auth/login'
+  // });
   $routeProvider
   .when('/', {
-    controller: 'MainCtrl',
-    controllerAs: 'main',
-    templateUrl: '/index.html'
+    // controller: 'TestCtrl',
+    controller: 'AuthCtrl',
+    controllerAs: 'auth',
+    templateUrl: '/auth/login.html'
+  })
+  .when('#index', {
+  	controller: 'MainCtrl',
+  	controllerAs: 'main',
+  	templateUrl: 'index.html'
   });
+
 })
 .controller('MainCtrl', function($timeout) { 
 	const main = this;

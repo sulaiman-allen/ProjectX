@@ -1,0 +1,53 @@
+<header id="header" class="">
+  <nav class="headerNav">
+    <ul>
+      <li><a href="/"><h1>NESTLR</h1></a>
+    </ul>
+    <ul>
+      <li><a href="" title="Books"></a>Books</li>
+    </ul>
+    <ul>
+      <li><a href="" title="Music"></a>Music</li>
+    </ul>
+    <ul>
+      <li><a href="" title="Games"></a>Games</li>
+    </ul>
+    <ul>
+      <li><a href="auth/login.html">Login</li>
+    </ul>
+  </nav>
+</header>
+<div>
+  <ng-view>
+
+  </ng-view>
+</div>
+<div class="card-columns mainContent" ng-controller='MainCtrl as main'>
+	<div ng-repeat="media in main.test.media" class="card card-block"> <!-- return last image -->
+    
+		<img class="cardImg" ng-src="{{media.images[media.images.length -1]}}">
+    <p>Title: {{media.title}}</p>
+    <p ng-if="media.description">Description: {{media.description}}</p>
+    <div ng-if="!media.owned"> <!-- if the current media item is not owned, show a list of retailers that sell it -->
+      <div ng-repeat="offer in media.offers">
+        <p>Price: ${{offer.price}}</p>
+        <a href={{offer.link}}<p>Seller: {{offer.merchant}}</p></a>
+      </div>
+    </div>
+    <p>This is just some garbage text to test the layout of this card element. I am just doing this as
+    an act of desperation because I need to see where the lines lie.</p>
+    <div>
+      <button class="btn btn-danger" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
+      <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
+       ng-click="main.isOwned(media.firebaseID, media.owned)"> Owned<br>
+       <select ng-model="media.mediaType">
+         <option value="Book">Book</option>
+         <option value="Music">Music</option>
+         <option value="Movie">Movie</option>
+         <option value="Game">Game</option>
+         <option value="Product">Product</option>
+       </select>
+      <button class="btn btn-primary" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button>
+   </div>
+	</div>
+</div>

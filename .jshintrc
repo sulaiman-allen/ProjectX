@@ -20,6 +20,7 @@
   "globals": {
     "test": false,
     "angular": true,
-    "firebase": true
+    "firebase": true,
+    "Catalog": true
   }
 }

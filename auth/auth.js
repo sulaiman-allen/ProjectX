@@ -1,45 +1,47 @@
 "use strict";
 
-Catalog.controller('AuthCtrl', function(authService, Firebase) {
+Catalog.controller('AuthCtrl', function(authService, $location) {
 
-	const auth = this;
+  const auth = this;
 
-	// firebase.onAuth(authService.authDataCallback());
+  auth.test = "This should be working now";
 
-	// var ref = new Firebase("https://catalogr-52a59.firebaseio.com");
+  auth.doAuth = function(email, password) {
 
-	auth.test = "This should be working now";
+    console.log(`email = ${email}. password = ${password}`);
 
-	auth.doAuth = function(email, password) {
+  };
 
-		console.log(`email = ${email}. password = ${password}`);
+  auth.register = function(email, password) {
 
-	};
 
-	auth.register = function(email, password) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      console.log(`errorCode = ${errorCode}`);
+      console.log(`errorMessage = ${errorMessage}`);
+    });
+      // ...
+    // }).then(function () {
+    //   console.log(`User ${email} created with password of ${password}`);
+    //   // $location.path("welcome");
+    //    $location.path('welcome');
+    // });
 
-		let ref = 
+    $location.path('welcome');
 
-		ref.createUser({
-		  email    : email,
-		  password : password
-			}, function(error, userData) {
-		  if (error) {
-		    console.log("Error creating user:", error);
-		  } else {
-		    console.log("Successfully created user account with uid:", userData.uid);
-		  }
-		});
-	};
+   
+  };
 
 })
 .service('authService', function() {
 
-	const auth = this;
+  const auth = this;
 
 
-	auth.authDataCallback = function() {
+  auth.authDataCallback = function() {
 
-	};
+  };
 
 });

@@ -11,26 +11,28 @@ Catalog.config(($routeProvider) => {
     storageBucket: "catalogr-52a59.appspot.com",
   });
 
-  // $routeProvider.otherwise({
-  //   controller: 'AuthCtrl',
-  // 	redirectTo: '/auth/login'
-  // });
   $routeProvider
   .when('/', {
-    // controller: 'TestCtrl',
     controller: 'AuthCtrl',
     controllerAs: 'auth',
     templateUrl: '/auth/login.html'
   })
-  .when('#index', {
+  .when('index', {
   	controller: 'MainCtrl',
   	controllerAs: 'main',
   	templateUrl: 'index.html'
+  })
+  .when('welcome', {
+  	controller: 'MainCrtl',
+  	controllerAs: 'main',
+  	templateUrl: '/main/welcome.html'
   });
 
 })
 .controller('MainCtrl', function($timeout) { 
 	const main = this;
+
+	main.test = "this is working";
 
 	firebase.database().ref('/').on('value', (snap) => {
 	  const data = snap.val();

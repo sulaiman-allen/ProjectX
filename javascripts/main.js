@@ -17,31 +17,27 @@ Catalog.config(($routeProvider) => {
     controllerAs: 'auth',
     templateUrl: '/auth/login.html'
   })
-  .when('index', {
+  .when('/welcome', {
   	controller: 'MainCtrl',
   	controllerAs: 'main',
-  	templateUrl: 'index.html'
-  })
-  .when('welcome', {
-  	controller: 'MainCrtl',
-  	controllerAs: 'main',
   	templateUrl: '/main/welcome.html'
+  })
+  .when('/register', {
+  	controller: 'AuthCtrl',
+  	controllerAs: 'auth',
+  	templateUrl: '/auth/register.html'
   });
-
 })
 .controller('MainCtrl', function($timeout) { 
 	const main = this;
 
-	main.test = "this is working";
-
 	firebase.database().ref('/').on('value', (snap) => {
 	  const data = snap.val();
-	  console.log("data = ", data);
+	  // console.log("data = ", data);
 	  main.test = data;
-	  console.log("main.test.media = ", main.test.media);
+	  // console.log("main.test.media = ", main.test.media);
 	  $timeout();
 	});
-
 
 	// Onclick event for setting the ownership of an item true or false in firebase
 	main.isOwned = function(id, value) {
@@ -55,25 +51,20 @@ Catalog.config(($routeProvider) => {
 		firebase.database().ref(`/media`).child(id).set(null);
 	};
 
+	// Onclick method for setting the type of media for each item
 	main.setType = function(id, value) {
 
 		firebase.database().ref(`/media/${id}`).child("mediaType").set(value);
 	};
-
-
-})
-.service('myAuth', function() {
-
-
-}) 
-.service('TestJson', function($http) {
-
-	const test = this;
-
-	test.getJson = function(x) {
-		$http.get('testjson/geb.json')
-		.success(function(data) {
-		  x(data);
-		});
-	};
 });
+// .service('TestJson', function($http) {
+
+// 	const test = this;
+
+// 	test.getJson = function(x) {
+// 		$http.get('testjson/geb.json')
+// 		.success(function(data) {
+// 		  x(data);
+// 		});
+// 	};
+// });

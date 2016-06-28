@@ -12,23 +12,22 @@
     <ul>
       <li><a href="" title="Games"></a>Games</li>
     </ul>
-    <ul>
-      <li><a href="auth/login.html">Login</li>
-    </ul>
+    <div  ng-controller="AuthCtrl as auth">
+      <ul>
+        <li><a href="" ng-click="auth.logout()">Logout</a></li>
+      </ul>
+    </div>
   </nav>
 </header>
-<div>
-  <ng-view>
-
-  </ng-view>
-</div>
 <div class="card-columns mainContent" ng-controller='MainCtrl as main'>
-	<div ng-repeat="media in main.test.media" class="card card-block"> <!-- return last image -->
+	<!-- return last image -->
+  <div ng-repeat="media in main.test.media" class="card card-block"> 
     
 		<img class="cardImg" ng-src="{{media.images[media.images.length -1]}}">
     <p>Title: {{media.title}}</p>
     <p ng-if="media.description">Description: {{media.description}}</p>
-    <div ng-if="!media.owned"> <!-- if the current media item is not owned, show a list of retailers that sell it -->
+    <!-- if the current media item is not owned, show a list of retailers that sell it -->
+    <div ng-if="!media.owned"> 
       <div ng-repeat="offer in media.offers">
         <p>Price: ${{offer.price}}</p>
         <a href={{offer.link}}<p>Seller: {{offer.merchant}}</p></a>

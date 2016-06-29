@@ -56,6 +56,42 @@ Catalog.config(($routeProvider) => {
 
 		firebase.database().ref(`/media/${id}`).child("mediaType").set(value);
 	};
+
+	// Onclick method for editing the current datafield
+	main.ClickToEditCtrl = function(media, field) {
+	  console.log("media = ", media);
+	  media.editorEnabled = !media.editorEnabled;
+	  // media.enableEditor();
+	  // console.log("media.editorEnabled = ", media.editorEnabled);
+	  
+	  media.enableEditor = function() {
+	  	console.log("enableEditor firing");
+	    media.editorEnabled = true;
+	    media.editableTitle = field;
+	  };
+	  
+	  media.disableEditor = function() {
+	  	console.log("disableEditor firing");
+	    media.editorEnabled = false;
+	  };
+	  
+	  media.save = function() {
+	  	console.log("save firing");
+	  	console.log("field = ", field);
+	  	console.log("media.editableTitle = ", media.editableTitle);
+	    field = media.editableTitle;
+	    console.log("field = ", field);
+	    media.disableEditor();
+	  };
+
+	  if(media.editorEnabled) {
+	 		console.log("editorEnabled = true");
+	  	media.enableEditor();
+	  } else {
+	 		console.log("editorEnabled = false");
+	  	media.disableEditor();
+	  }
+	};
 });
 // .service('TestJson', function($http) {
 

@@ -71,6 +71,26 @@ body {
   margin-left: 13px;
 }
 
+
+.ownedAndType {
+  display: block;
+  float: left;
+  margin-top: -10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 10px;
+}
+
+.mediaBtn {
+  margin-right: 10px;
+  /*margin-bottom: -16px;*/
+}
+
+.cardInfo {
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
 .cardImg {
   display: block;
 	margin: auto;

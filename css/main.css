@@ -113,24 +113,30 @@ body {
 }
 
 .col-xs-15 {
-    width: 20%;
+    /*width: 20%;*/
+    width: 15%;
     float: left;
 }
 @media (min-width: 768px) {
 .col-sm-15 {
-        width: 20%;
+        /*width: 20%;*/
+        width: 15%;
         float: left;
     }
 }
 @media (min-width: 992px) {
     .col-md-15 {
-        width: 20%;
+        /*width: 20%;*/
+        width: 15%;
         float: left;
+        /*new*/
+        margin: 0px 7px;
     }
 }
 @media (min-width: 1200px) {
     .col-lg-15 {
-        width: 20%;
+        /*width: 20%;*/
+        width: 15%;
         float: left;
     }
 }

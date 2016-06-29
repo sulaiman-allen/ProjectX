@@ -67,10 +67,52 @@ h1 {
 	/*text-align: center;*/
 }
 
+body {
+  margin-left: 13px;
+}
+
 .cardImg {
   display: block;
 	margin: auto;
 	padding-bottom: 20px;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+/*Ripped these off from online */
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1px solid lightgrey;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
 }
 
 

@@ -31,7 +31,8 @@
     <p ng-if="media.description">Description: {{media.description}}</p>
     <!-- if the current media item is not owned, show a list of retailers that sell it -->
     <div ng-if="!media.owned"> 
-      <div ng-repeat="offer in media.offers">
+      <div ng-repeat="offer in media.offers | orderBy: 'price*1' | limitTo: 4 ">
+        <!-- {{offer.offers}} -->
         <p>Price: ${{offer.price}}</p>
         <a href={{offer.link}}<p>Seller: {{offer.merchant}}</p></a>
       </div>

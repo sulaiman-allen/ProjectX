@@ -71,26 +71,6 @@ body {
   margin-left: 13px;
 }
 
-
-.ownedAndType {
-  display: block;
-  float: left;
-  margin-top: -10px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-bottom: 10px;
-}
-
-.mediaBtn {
-  margin-right: 10px;
-  /*margin-bottom: -16px;*/
-}
-
-.cardInfo {
-  margin-bottom: 12px;
-  box-sizing: border-box;
-}
-
 .cardImg {
   display: block;
 	margin: auto;
@@ -113,30 +93,24 @@ body {
 }
 
 .col-xs-15 {
-    /*width: 20%;*/
-    width: 15%;
+    width: 20%;
     float: left;
 }
 @media (min-width: 768px) {
 .col-sm-15 {
-        /*width: 20%;*/
-        width: 15%;
+        width: 20%;
         float: left;
     }
 }
 @media (min-width: 992px) {
     .col-md-15 {
-        /*width: 20%;*/
-        width: 15%;
+        width: 20%;
         float: left;
-        /*new*/
-        margin: 0px 7px;
     }
 }
 @media (min-width: 1200px) {
     .col-lg-15 {
-        /*width: 20%;*/
-        width: 15%;
+        width: 20%;
         float: left;
     }
 }

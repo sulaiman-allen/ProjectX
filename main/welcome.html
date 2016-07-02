@@ -19,47 +19,45 @@
     </div>
   </nav>
 </header>
-<!-- <div class="card-columns mainContent" ng-controller='MainCtrl as main'> -->
-<div class="row mainContent" ng-controller='MainCtrl as main'>
-	<!-- return last image -->
-  <!-- <div ng-repeat="media in main.test.media" class="card card-block">  -->
-  <div ng-repeat="media in main.test.media" class="col-md-15 col-sm-3"> 
-		<!-- <img class="cardImg" ng-src="{{media.images[media.images.length -1]}}"> -->
-    <img class="cardImg" ng-src="{{media.amazonImgLrg}}">
-    <p>Title: {{media.title}}</p>
-    <div ng-hide="editorEnabled">
-      <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)">Description: {{media.description}}</p>
-    </div>
-    <div ng-show="media.editorEnabled">
-      <input ng-model="media.editableTitle" ng-show="media.editorEnabled">
-      <a href="" ng-click="media.save()">Save</a>
-      or
-      <a href="" ng-click="media.disableEditor()">cancel</a>.
-    </div>
-    <!-- if the current media item is not owned, show a list of retailers that sell it -->
-    <div ng-if="!media.owned"> 
-      <!-- limit to 4 items, convert string to float and sort by price -->
-      <div ng-repeat="offer in media.offers | orderBy: 'price*1' | limitTo: 4 ">
-        <a href={{offer.link}}><p>Seller: {{offer.merchant}}</p></a>
-        <p>Price: ${{offer.price}}</p>
+<div id="wrapper">
+  <div id="columns" ng-controller='MainCtrl as main'>
+    <div ng-repeat="media in main.test.media" class="pin"> 
+      <img ng-src="{{media.amazonImgLrg}}">
+      <p>Title: {{media.title}}</p>
+      <div ng-hide="editorEnabled">
+        <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)">Description: {{media.description}}</p>
       </div>
-    </div>
-    <!-- <p>This is just some garbage text to test the layout of this card element. I am just doing this as
-    an act of desperation because I need to see where the lines lie.</p> -->
-    <div class="cardInfo">
-      <div class="ownedAndType">
-        <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
-         ng-click="main.isOwned(media.firebaseID, media.owned)">Owned<br>
-         <select ng-model="media.mediaType">
-           <option value="Book">Book</option>
-           <option value="Music">Music</option>
-           <option value="Movie">Movie</option>
-           <option value="Game">Game</option>
-           <option value="Product">Product</option>
-         </select>
+      <div ng-show="media.editorEnabled">
+        <input ng-model="media.editableTitle" ng-show="media.editorEnabled">
+        <a href="" ng-click="media.save()">Save</a>
+        or
+        <a href="" ng-click="media.disableEditor()">cancel</a>.
       </div>
-      <button class="btn btn-primary mediaBtn" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button>
-      <button class="btn btn-danger deleteBtn" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
-   </div>
-	</div>
+      <!-- if the current media item is not owned, show a list of retailers that sell it -->
+      <div ng-if="!media.owned"> 
+        <!-- limit to 4 items, convert string to float and sort by price -->
+        <div ng-repeat="offer in media.offers | orderBy: 'price*1' | limitTo: 4 ">
+          <a href={{offer.link}}><p>Seller: {{offer.merchant}}</p></a>
+          <p>Price: ${{offer.price}}</p>
+        </div>
+      </div>
+      <!-- <p>This is just some garbage text to test the layout of this card element. I am just doing this as
+      an act of desperation because I need to see where the lines lie.</p> -->
+      <div class="cardInfo">
+        <div class="ownedAndType">
+          <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
+           ng-click="main.isOwned(media.firebaseID, media.owned)">Owned<br>
+           <select ng-model="media.mediaType">
+             <option value="Book">Book</option>
+             <option value="Music">Music</option>
+             <option value="Movie">Movie</option>
+             <option value="Game">Game</option>
+             <option value="Product">Product</option>
+           </select>
+        </div>
+        <button class="btn btn-primary mediaBtn" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button>
+        <button class="btn btn-danger deleteBtn" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
+      </div>
+  	</div>
+  </div>
 </div>

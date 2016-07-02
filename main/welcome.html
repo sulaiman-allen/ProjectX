@@ -24,7 +24,8 @@
 	<!-- return last image -->
   <!-- <div ng-repeat="media in main.test.media" class="card card-block">  -->
   <div ng-repeat="media in main.test.media" class="col-md-15 col-sm-3"> 
-		<img class="cardImg" ng-src="{{media.images[media.images.length -1]}}">
+		<!-- <img class="cardImg" ng-src="{{media.images[media.images.length -1]}}"> -->
+    <img class="cardImg" ng-src="{{media.amazonImgLrg}}">
     <p>Title: {{media.title}}</p>
     <div ng-hide="editorEnabled">
       <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)">Description: {{media.description}}</p>

@@ -1,6 +1,6 @@
 "use strict";
 
-var Catalog = angular.module('catalog', ['ngRoute']);
+var Catalog = angular.module('catalog', ['ngRoute','ui.bootstrap']);
 
 Catalog.config(($routeProvider) => {
 
@@ -28,7 +28,7 @@ Catalog.config(($routeProvider) => {
     templateUrl: '/auth/register.html'
   });
 })
-.controller('MainCtrl', function($timeout, $uibModal) { 
+.controller('MainCtrl', function($timeout, $uibModal, $scope) { 
   const main = this;
 
   firebase.database().ref('/').on('value', (snap) => {
@@ -45,18 +45,14 @@ Catalog.config(($routeProvider) => {
     firebase.database().ref(`/media/${id}`).child("owned").set(value);
   };
 
-  // Onclick event for deleting the item from the database
-  // main.deleteItem = function(id) {
-
-  //  firebase.database().ref(`/media`).child(id).set(null);
-  // };
 
   main.deleteItem = function (id) {
 
-    var modalInstance = $uibModal.open({
+    console.log(`id = ${id}`);
+    let modalInstance = $uibModal.open({
       animation: true,
       templateUrl: '/main/deletemodal.html',
-      // controller: 'MainCtrl',
+      controller: 'ModalInstanceCtrl',
       size: 'sm',
       resolve: {
         id: function () {
@@ -68,7 +64,7 @@ Catalog.config(($routeProvider) => {
     modalInstance.result.then(function (selectedItem) {
       console.log(selectedItem);
       }, function () {
-          console.log('Modal dismissed at: ' + new Date());
+          // console.log('Modal dismissed at: ' + new Date());
       });
   };
 
@@ -79,6 +75,40 @@ Catalog.config(($routeProvider) => {
     firebase.database().ref(`/media/${id}`).child("mediaType").set(value);
   };
 
+  main.test = "this is working";
+
+  main.showImage = function(image) { 
+    console.log(`image = ${image}`);
+    // main.currentImg = image;
+    let imageModal = $uibModal.open({
+      animation: true,
+      templateUrl: '/main/imgmodal',
+      controller: 'ModalInstanceCtrl',
+      size: 'lg',
+      resolve: {
+        id: function () {
+          // console.log("returning image");
+          console.log(`image = ${image}`);
+          $scope.currentImg = image;
+          // $scope.$apply();
+          console.log(`after image set`);
+          console.log($scope.currentImg);
+          return image;
+        }
+      }
+    });
+    imageModal.result.then(function (selectedItem) {
+      // console.log(`image = ${image}`);
+      // $scope.currentImg = image;
+      // $scope.$apply();
+      // main.currentImg = image;
+      console.log(`selectedItem = ${selectedItem}`);
+      }, function () {
+          // console.log('Modal dismissed at: ' + new Date());
+      });
+  };
+
+  
   // Onclick method for editing the current datafield
   main.ClickToEditCtrl = function(media, field) {
     console.log("media = ", media);
@@ -114,15 +144,17 @@ Catalog.config(($routeProvider) => {
       media.disableEditor();
     }
   };
+})
+.controller('ModalInstanceCtrl', function ($uibModalInstance, $scope, id) {
+
+  $scope.test = "this should work now";
+
+  $scope.ok = function () {
+    firebase.database().ref(`/media`).child(id).set(null);
+    $uibModalInstance.dismiss('cancel');
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 });
-// .service('TestJson', function($http) {
-
-//  const test = this;
-
-//  test.getJson = function(x) {
-//    $http.get('testjson/geb.json')
-//    .success(function(data) {
-//      x(data);
-//    });
-//  };
-// });

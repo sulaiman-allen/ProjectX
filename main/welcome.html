@@ -22,8 +22,8 @@
 <div id="wrapper">
   <div id="columns" ng-controller='MainCtrl as main'>
     <div ng-repeat="media in main.test.media" class="pin"> 
-      <img ng-src="{{media.amazonImgLrg}}">
-      <p>Title: {{media.title}}</p>
+      <img ng-src="{{media.amazonImgLrg}}" ng-click="main.showImage(media.amazonImgLrg)">
+      <h5 class="title">Title: {{media.title}}</h5>
       <div ng-hide="editorEnabled">
         <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)">Description: {{media.description}}</p>
       </div>
@@ -34,15 +34,12 @@
         <a href="" ng-click="media.disableEditor()">cancel</a>.
       </div>
       <!-- if the current media item is not owned, show a list of retailers that sell it -->
-      <div ng-if="!media.owned"> 
+      <div ng-if="!media.owned" class="mediaOwned"> 
         <!-- limit to 4 items, convert string to float and sort by price -->
-        <div ng-repeat="offer in media.offers | orderBy: 'price*1' | limitTo: 4 ">
-          <a href={{offer.link}}><p>Seller: {{offer.merchant}}</p></a>
-          <p>Price: ${{offer.price}}</p>
+        <div ng-repeat="offer in media.offers | orderBy: 'price*1' | limitTo: 4 " class="mediaSource">
+          <a href={{offer.link}} class="seller"><p>${{offer.price}} - {{offer.merchant}}</p></a>
         </div>
       </div>
-      <!-- <p>This is just some garbage text to test the layout of this card element. I am just doing this as
-      an act of desperation because I need to see where the lines lie.</p> -->
       <div class="cardInfo">
         <div class="ownedAndType">
           <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false

@@ -1,0 +1,12 @@
+<div ng-controller="MainCtrl as main">
+  <div class="modal-header">
+    <!-- <p class="modal-title">{{media.title}}</p> -->
+    <p class="modal-title">Title</p>
+  </div>
+  {{main.test}}
+  The current value of main.currentImg = {{currentImg}}
+  <img ng-src="{{main.currentImg}}">
+  <div class="modal-footer">
+    <button class="btn btn-primary"ng-click="cancel()">Close</button>
+  </div>
+</div>

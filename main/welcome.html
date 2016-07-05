@@ -1,5 +1,6 @@
 <header id="header" class="">
   <nav class="headerNav">
+    <!-- <img src="/img/nestlr.png"> -->
     <ul>
       <li><a href="/"><h1>NESTLR</h1></a>
     </ul>
@@ -22,9 +23,13 @@
 <div id="wrapper">
   <div id="columns" ng-controller='MainCtrl as main'>
     <div ng-repeat="media in main.test.media" class="pin"> 
-      <img ng-src="{{media.amazonImgLrg}}" ng-click="main.showImage(media.amazonImgLrg)">
+      <img ng-src="{{media.amazonImgLrg}}" ng-click="main.showBook(media.isbn)">
       <h5 class="title">Title: {{media.title}}</h5>
-      <div ng-hide="editorEnabled">
+      <div ng-if="media.googleBookInfo.description">
+        Media description found
+        <!-- Description: {{media.googleBookInfo.description}} -->
+      </div>
+      <!-- <div ng-hide="editorEnabled">
         <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)">Description: {{media.description}}</p>
       </div>
       <div ng-show="media.editorEnabled">
@@ -32,9 +37,9 @@
         <a href="" ng-click="media.save()">Save</a>
         or
         <a href="" ng-click="media.disableEditor()">cancel</a>.
-      </div>
+      </div> -->
       <!-- if the current media item is not owned, show a list of retailers that sell it -->
-      <div ng-if="!media.owned" class="mediaOwned"> 
+      <div ng-if="!media.owned" class="mediaOwned" > 
         <!-- limit to 4 items, convert string to float and sort by price -->
         <div ng-repeat="offer in media.offers | orderBy: 'price*1' | limitTo: 4 " class="mediaSource">
           <a href={{offer.link}} class="seller"><p>${{offer.price}} - {{offer.merchant}}</p></a>
@@ -44,7 +49,7 @@
         <div class="ownedAndType">
           <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
            ng-click="main.isOwned(media.firebaseID, media.owned)">Owned<br>
-           <select ng-model="media.mediaType">
+           <select class="c-select" ng-model="media.mediaType">
              <option value="Book">Book</option>
              <option value="Music">Music</option>
              <option value="Movie">Movie</option>
@@ -52,8 +57,8 @@
              <option value="Product">Product</option>
            </select>
         </div>
-        <button class="btn btn-primary mediaBtn" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button>
-        <button class="btn btn-danger deleteBtn" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
+        <button class="btn btn-primary mediaBtn btn-sm" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button>
+        <button class="btn btn-danger deleteBtn btn-sm" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
       </div>
   	</div>
   </div>

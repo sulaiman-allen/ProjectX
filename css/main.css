@@ -45,17 +45,25 @@
 	margin-bottom: 90px;
 	width: 33%;
 }
+
+/*////////////////////////////////////////////Header///////////////////////////////////////////////*/
+
 .headerNav ul {
 	list-style: none;
 	float: left;
 	display: block;
+/*	margin-left: 35%;
+	margin-bottom: 90px;
+	padding-bottom: 48px;*/
 }
 
 .headerNav {
-	display: block;
-	margin-left: 35%;
-	margin-bottom: 90px;
-	padding-bottom: 48px;
+  width: 100%;
+  height: 65px;
+  margin-bottom: 76px;
+  padding-right: 12px;
+  background-color: white;
+  display: block;
 }
 
 .mainContent {
@@ -67,17 +75,14 @@ h1 {
 	/*text-align: center;*/
 }
 
-body {
-  margin-left: 13px;
-}
 
-.cardImg {
+/*.cardImg {
   display: block;
 	margin: auto;
 	padding-bottom: 20px;
   max-width: 90%;
   max-height: 90%;
-}
+}*/
 
 .mediaOwned {
   background-color: #c9d9ea;
@@ -97,21 +102,46 @@ body {
 }
 
 .title {
-  color: tomato;
+  /*color: #8D5903;*/
+  color: #216452;
+  font-family: 'Playfair Display', serif;
 }
 
-/*Ripped off from online*/
+.ownedAndType {
+  display: inline-block;
+  float: left;
+}
+
+.cardInfo {
+  float: left;
+}
+
+.mediaBtn {
+  margin-top: 20px;
+  margin-left: 15px;
+  background-color: #2a6198;
+  border: none;
+  /*background-color: #216452;*/
+  /*border: 1px solid #216452;*/
+}
+
+.deleteBtn {
+  margin-top: 20px;
+  margin-left: 8px;
+}
+
+input {
+  margin-right: 6px;
+}
+
 body {
 /*background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;*/
   background-image: url("/img/upfeathers.png");
-  /*background-image: url("/img/subtle_white_feathers.png");*/
   /*transform: rotate(30deg)*/
 }
 
 #wrapper {
   width: 70%;
-  /*background-image: url("/img/subtle_white_feathers.png");*/
-  /*max-width: 1100px;*/
   min-width: 800px;
   margin: 10px auto;
 }

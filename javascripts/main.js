@@ -33,7 +33,7 @@ Catalog.config(($routeProvider) => {
 
   firebase.database().ref('/').on('value', (snap) => {
     const data = snap.val();
-    // console.log("data = ", data);
+    console.log("new data added = ", data.media);
     main.test = data;
     // console.log("main.test.media = ", main.test.media);
     $timeout();
@@ -108,6 +108,39 @@ Catalog.config(($routeProvider) => {
       });
   };
 
+  main.showBook = function(isbn) { 
+
+    console.log(`isbn = ${isbn}`);
+
+    let bookModal = $uibModal.open({
+      animation: true,
+      templateUrl: '/main/bookmodal',
+      controller: 'ModalInstanceCtrl',
+      size: 'lg',
+      resolve: {
+        id: function () {
+          console.log(`isbn = ${isbn}`);
+          return isbn;
+        }
+      }
+    });
+    bookModal.result.then(function (selectedItem) {
+
+      google.books.load();
+
+      function initialize() {
+        var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+        viewer.load('ISBN:0738531367');
+      }
+
+      google.books.setOnLoadCallback(initialize);
+
+      console.log(`selectedItem = ${selectedItem}`);
+      }, function () {
+          // console.log('Modal dismissed at: ' + new Date());
+      });
+  };
+
   
   // Onclick method for editing the current datafield
   main.ClickToEditCtrl = function(media, field) {
@@ -148,6 +181,7 @@ Catalog.config(($routeProvider) => {
 .controller('ModalInstanceCtrl', function ($uibModalInstance, $scope, id) {
 
   $scope.test = "this should work now";
+
 
   $scope.ok = function () {
     firebase.database().ref(`/media`).child(id).set(null);

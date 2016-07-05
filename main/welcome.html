@@ -1,17 +1,19 @@
-<header id="header" class="">
+<header id="header" class="" ng-controller='MainCtrl as main'>
   <nav class="headerNav">
     <!-- <img src="/img/nestlr.png"> -->
+    {{main.glorb}}
     <ul>
       <li><a href="/"><h1>NESTLR</h1></a>
     </ul>
     <ul>
-      <li><a href="" title="Books"></a>Books</li>
+      <li><p ng-click="main.filteredMedia(Book)">Book</p></li>
+      <!-- <li><a href="" title="Books" ng-click="main.filteredMedia = Book"></a><p>Books</p></li> -->
     </ul>
     <ul>
-      <li><a href="" title="Music"></a>Music</li>
+      <li><a href="" title="Music" ng-click="main.filteredMedia = Music"></a>Music</li>
     </ul>
     <ul>
-      <li><a href="" title="Games"></a>Games</li>
+      <li><a href="" title="Games" ng-click="main.filteredMedia = Game"></a>Games</li>
     </ul>
     <div  ng-controller="AuthCtrl as auth">
       <ul>
@@ -21,15 +23,17 @@
   </nav>
 </header>
 <div id="wrapper">
-  <div id="columns" ng-controller='MainCtrl as main'>
-    <div ng-repeat="media in main.test.media" class="pin"> 
+  <div id="columns">
+    <div ng-repeat="media in main.test.media | toArray | filter: {mediaType: main.filterType}" class="pin"> 
+    <!-- <div ng-repeat="media in main.test.media" class="pin">  -->
+
       <img ng-src="{{media.amazonImgLrg}}" ng-click="main.showBook(media.isbn)">
       <h5 class="title">Title: {{media.title}}</h5>
-      <div ng-if="media.googleBookInfo.description">
-        Media description found
+<!--       <div ng-if="media.googleBookInfo.description">
+        Media description found -->
         <!-- Description: {{media.googleBookInfo.description}} -->
-      </div>
-      <!-- <div ng-hide="editorEnabled">
+      <!-- </div> -->
+      <div ng-hide="editorEnabled">
         <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)">Description: {{media.description}}</p>
       </div>
       <div ng-show="media.editorEnabled">
@@ -37,7 +41,7 @@
         <a href="" ng-click="media.save()">Save</a>
         or
         <a href="" ng-click="media.disableEditor()">cancel</a>.
-      </div> -->
+      </div>
       <!-- if the current media item is not owned, show a list of retailers that sell it -->
       <div ng-if="!media.owned" class="mediaOwned" > 
         <!-- limit to 4 items, convert string to float and sort by price -->

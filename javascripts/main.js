@@ -1,6 +1,6 @@
 "use strict";
 
-var Catalog = angular.module('catalog', ['ngRoute','ui.bootstrap']);
+var Catalog = angular.module('catalog', ['ngRoute','ui.bootstrap', 'angular.filter']);
 
 Catalog.config(($routeProvider) => {
 
@@ -30,6 +30,18 @@ Catalog.config(($routeProvider) => {
 })
 .controller('MainCtrl', function($timeout, $uibModal, $scope) { 
   const main = this;
+
+  main.filterType = "Movie";
+
+  main.filteredMedia = function(type){
+  	main.filterType = type;
+  };
+
+  main.test = function() {
+  	console.log("working");
+  };
+
+  main.glorb = "Glorbon";
 
   firebase.database().ref('/').on('value', (snap) => {
     const data = snap.val();

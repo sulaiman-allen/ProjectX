@@ -31,10 +31,13 @@ Catalog.config(($routeProvider) => {
 .controller('MainCtrl', function($timeout, $uibModal, $scope) { 
   const main = this;
 
-  main.filterType = "Movie";
+  main.filterType = "";
 
   main.filteredMedia = function(type){
+  	console.log("I work", type);
   	main.filterType = type;
+  	// $scope.$apply();
+  	$timeout();
   };
 
   main.test = function() {

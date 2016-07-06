@@ -23,7 +23,9 @@
     <!-- <div ng-repeat="media in main.test.media" class="pin">  -->
 
       <img ng-src="{{media.amazonImgLrg}}" ng-click="main.showBook(media.isbn)">
+      <!-- <img ng-src="{{media.amazonImgLrg}}>" -->
       <h5 class="title">Title: {{media.title}}</h5>
+
 
 
       <div ng-hide="editorEnabled">
@@ -53,6 +55,7 @@
         <p>Page Count: {{media.googleBookInfo.pageCount}}</p>
         <p>Average Rating: {{media.googleBookInfo.averageRating}}/5</p>
         <p>Description: {{media.googleBookInfo.description}}</p>
+        <a href={{media.googleBookInfo.previewLink}} target="_blank">See Sample</a>
       </div>
 
       <!-- if the current media item is not owned, show a list of retailers that sell it -->

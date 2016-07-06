@@ -1,12 +1,42 @@
-<div ng-controller="MainCtrl as main">
+<div>
   <div class="modal-header">
     <!-- <p class="modal-title">{{media.title}}</p> -->
     <p class="modal-title">Title</p>
   </div>
-  {{main.test}}
+  {{test}}
+<!--   {{main.test}}
   The current value of main.currentImg = {{currentImg}}
-  <img ng-src="{{main.currentImg}}">
+  <img ng-src="{{main.currentImg}}"> -->
+
+<!--     <script type="text/javascript">
+      google.books.load();
+
+      function initialize() {
+        var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+        viewer.load('ISBN:0738531367');
+      }
+
+      google.books.setOnLoadCallback(initialize);
+    </script>
+  <body>
+    <div id="viewerCanvas" style="width: 600px; height: 500px"></div>
+    this should do something
+  </body>
+ -->
+
+
+
+<script type="text/javascript" src="https://books.google.com/books/previewlib.js"></script>
+ <script type="text/javascript">
+ GBS_insertEmbeddedViewer('ISBN:9781898435730',600,500);
+ </script>
+
+
+
+
+
   <div class="modal-footer">
     <button class="btn btn-primary"ng-click="cancel()">Close</button>
   </div>
 </div>
+

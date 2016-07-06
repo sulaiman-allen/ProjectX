@@ -24,19 +24,31 @@
 
       <img ng-src="{{media.amazonImgLrg}}" ng-click="main.showBook(media.isbn)">
       <h5 class="title">Title: {{media.title}}</h5>
-<!--       <div ng-if="media.googleBookInfo.description">
-        Media description found -->
-        <!-- Description: {{media.googleBookInfo.description}} -->
-      <!-- </div> -->
+
+
       <div ng-hide="editorEnabled">
-        <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)">Description: {{media.description}}</p>
+        <!-- only show decription if googlebooks doesnt exist and the normal description does and if the description doesnt match the tile-->
+        <div ng-if="!media.googleBookInfo">
+          <div ng-if="media.description != media.title">
+            <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)" class="mediaDescription">Description: {{media.description}}</p>
+          </div>
+        </div>
       </div>
       <div ng-show="media.editorEnabled">
-        <input ng-model="media.editableTitle" ng-show="media.editorEnabled">
+        <input ng-model="media.editableTitle" ng-show="media.editorEnabled" ng-hide=editorEnabled ng-change=>
         <a href="" ng-click="media.save()">Save</a>
         or
         <a href="" ng-click="media.disableEditor()">cancel</a>.
       </div>
+
+
+      <div ng-if="media.googleBookInfo" class=googleBookInfo>
+        <p>Publisher: {{media.googleBookInfo.publisher}}</p>
+        <p>Page Count: {{media.googleBookInfo.pageCount}}</p>
+        <p>Average Rating: {{media.googleBookInfo.averageRating}}/5</p>
+        <p>Description: {{media.googleBookInfo.description}}</p>
+      </div>
+
       <!-- if the current media item is not owned, show a list of retailers that sell it -->
       <div ng-if="!media.owned" class="mediaOwned" > 
         <!-- limit to 4 items, convert string to float and sort by price -->
@@ -46,9 +58,11 @@
       </div>
       <div class="cardInfo">
         <div class="ownedAndType">
+          <!-- media owned checkbox -->
           <input ng-model="media.owned" type="checkbox" ng-true-value=true ng-false-value=false
            ng-click="main.isOwned(media.firebaseID, media.owned)">Owned<br>
-           <select class="c-select" ng-model="media.mediaType">
+           <!-- select dropdown -->
+           <select class="c-select" ng-model="media.mediaType" ng-change="main.setType(media.firebaseID, media.mediaType)">
              <option value="Book">Book</option>
              <option value="Music">Music</option>
              <option value="Movie">Movie</option>
@@ -56,7 +70,7 @@
              <option value="Product">Product</option>
            </select>
         </div>
-        <button class="btn btn-primary mediaBtn btn-sm" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button>
+<!--         <button class="btn btn-primary mediaBtn btn-sm" ng-click="main.setType(media.firebaseID, media.mediaType)">Set Media Type</button> -->
         <button class="btn btn-danger deleteBtn btn-sm" ng-click="main.deleteItem(media.firebaseID)">Delete</button>
       </div>
   	</div>

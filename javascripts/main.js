@@ -34,15 +34,20 @@ Catalog.config(($routeProvider) => {
   main.filterType = "";
 
   main.filteredMedia = function(type){
-  	console.log("I work", type);
   	main.filterType = type;
   	// $scope.$apply();
   	$timeout();
   };
 
+  main.testFunc = function() {
+  	console.log("this is running");
+  };
+
   main.test = function() {
   	console.log("working");
   };
+
+  main.zork = "glorb";
 
   main.glorb = "Glorbon";
 
@@ -141,14 +146,14 @@ Catalog.config(($routeProvider) => {
     });
     bookModal.result.then(function (selectedItem) {
 
-      google.books.load();
+      // google.books.load();
 
-      function initialize() {
-        var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-        viewer.load('ISBN:0738531367');
-      }
+      // function initialize() {
+      //   var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+      //   viewer.load('ISBN:0738531367');
+      // }
 
-      google.books.setOnLoadCallback(initialize);
+      // google.books.setOnLoadCallback(initialize);
 
       console.log(`selectedItem = ${selectedItem}`);
       }, function () {
@@ -158,16 +163,14 @@ Catalog.config(($routeProvider) => {
 
   
   // Onclick method for editing the current datafield
-  main.ClickToEditCtrl = function(media, field) {
+  main.ClickToEditCtrl = function(media, value) {
     console.log("media = ", media);
     media.editorEnabled = !media.editorEnabled;
-    // media.enableEditor();
-    // console.log("media.editorEnabled = ", media.editorEnabled);
     
     media.enableEditor = function() {
       console.log("enableEditor firing");
       media.editorEnabled = true;
-      media.editableTitle = field;
+      media.editableTitle = value;
     };
     
     media.disableEditor = function() {
@@ -177,10 +180,14 @@ Catalog.config(($routeProvider) => {
     
     media.save = function() {
       console.log("save firing");
-      console.log("field = ", field);
+      console.log("value = ", value);
       console.log("media.editableTitle = ", media.editableTitle);
-      field = media.editableTitle;
-      console.log("field = ", field);
+      value = media.editableTitle;
+      console.log("secondvalue = ", value);
+
+      // firebase.database().ref(`/media/${id}`).child(field).set(value);
+
+
       media.disableEditor();
     };
 

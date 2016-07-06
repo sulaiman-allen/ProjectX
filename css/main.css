@@ -155,6 +155,10 @@
   margin-left: 8px;
 }
 
+.saveOrCancel {
+  margin-bottom: 20px;
+}
+
 input {
   margin-right: 6px;
 }

@@ -32,17 +32,19 @@
           <div ng-if="media.description != media.title">
           <!-- Also, dont show this box if the editing is enabled -->
             <div ng-if="!media.editorEnabled">
-              <p ng-if="media.description" ng-click="main.ClickToEditCtrl(media, media.description)" class="mediaDescription">Description: {{media.description}}</p>
+              <p ng-if="media.description" ng-dblclick="main.ClickToEditCtrl(media, media.description, media.firebaseID)" class="mediaDescription">Description: {{media.description}}</p>
             </div>
           </div>
         </div>
       </div>
       <!-- if the key of editorenabled exists, show whats below -->
       <div ng-show="media.editorEnabled">
-        <textarea ng-model="media.editableTitle" ng-show="media.editorEnabled" rows="21"></textarea>
-        <a href="" ng-click="media.save()">Save</a>
-        or
-        <a href="" ng-click="media.disableEditor()">cancel</a>.
+        <textarea ng-model="media.editableTitle" ng-show="media.editorEnabled" rows="15" class="form-control"></textarea>
+        <div class="saveOrCancel"> 
+          <button class="btn btn-danger btn-sm" ng-click="media.save()">Save</button>
+          or
+          <button class="btn btn-primary btn-sm" ng-click="media.disableEditor()">Cancel</button>
+        </div>
       </div>
 
 

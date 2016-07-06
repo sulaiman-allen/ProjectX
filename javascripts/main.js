@@ -163,8 +163,10 @@ Catalog.config(($routeProvider) => {
 
   
   // Onclick method for editing the current datafield
-  main.ClickToEditCtrl = function(media, value) {
+  main.ClickToEditCtrl = function(media, value, id) {
     console.log("media = ", media);
+    console.log("value = ", value);
+    console.log("id = ", id);
     media.editorEnabled = !media.editorEnabled;
     
     media.enableEditor = function() {
@@ -185,7 +187,7 @@ Catalog.config(($routeProvider) => {
       value = media.editableTitle;
       console.log("secondvalue = ", value);
 
-      // firebase.database().ref(`/media/${id}`).child(field).set(value);
+      firebase.database().ref(`/media/${id}`).child("description").set(value);
 
 
       media.disableEditor();

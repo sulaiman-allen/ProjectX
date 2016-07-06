@@ -54,7 +54,20 @@
         <p>Publisher: {{media.googleBookInfo.publisher}}</p>
         <p>Page Count: {{media.googleBookInfo.pageCount}}</p>
         <p>Average Rating: {{media.googleBookInfo.averageRating}}/5</p>
-        <p>Description: {{media.googleBookInfo.description}}</p>
+
+        <div ng-if="!media.showDescription">
+          <div>
+            <p ng-click="main.showDescription(media)">Description: {{media.googleBookInfo.description | limitTo : 200 : begin}}...</p>
+          </div>
+        </div>
+
+        <div ng-if="media.showDescription">
+          <div>
+            <p ng-click="main.showDescription(media)">Description: {{media.googleBookInfo.description}}</p>
+          </div>
+        </div>
+
+
         <a href={{media.googleBookInfo.previewLink}} target="_blank">See Sample</a>
       </div>
 

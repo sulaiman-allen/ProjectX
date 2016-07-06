@@ -128,6 +128,12 @@ Catalog.config(($routeProvider) => {
       });
   };
 
+      
+  main.showDescription = function(media) {
+    console.log("showDescription");
+    media.showDescription = !media.showDescription;
+  };
+
   main.showBook = function(isbn) { 
 
     console.log(`isbn = ${isbn}`);

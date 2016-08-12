@@ -6,14 +6,22 @@ Simply scan a barcode with the nestlr phone app and watch as information about y
 media appears in real time in the web app (your nest). Depending upon the type of media scanned,
 different information is displayed. 
 
-![](./img/SiteResources/Main.jpg)
+<p align="center">
+  <img src="./img/SiteResources/Main.jpg">
+</p>
 
 ###Features:
 nestlr can be used not only for cataloging things that are owned, but also for things you are considering buying.
 With the owned vs. unowned feature, the user can quickly see online prices for the item in question. By default, 
 when an item is scanned, it defaults to being unowned.
 
-![](./img/SiteResources/ShellUnOwned.jpg)
+<p align="left">
+  <img src="./img/SiteResources/ShellUnOwned.jpg">
+</p>
+<p align="right">
+  <img src="./img/SiteResources/ShellOwned.jpg">
+</p>
+<!--![](./img/SiteResources/ShellUnOwned.jpg)-->
 
 Simply click the owned button to hide the retailer info
 

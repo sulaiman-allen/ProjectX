@@ -16,4 +16,6 @@ call to upcite, another api call is made to Amazon via the asin tag that is retu
 images. If the media item is a book, another call is made to Google Books for information about author, rating, page count etc.
 The final step is to post the object to firebase.
 
-The nestlr web app is written in AngularJs and makes REST calls to firebase for database retrieval. 
+The nestlr web app is written in AngularJs and makes REST calls to firebase for database retrieval.
+<!--(./img/SiteResources/Main.jpg)-->
+[x](https://github.com/sulaiman-allen/nestlr/blob/master/img/SiteResources/Main.jpg)

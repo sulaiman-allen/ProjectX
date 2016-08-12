@@ -18,4 +18,4 @@ The final step is to post the object to firebase.
 
 The nestlr web app is written in AngularJs and makes REST calls to firebase for database retrieval.
 <!--(./img/SiteResources/Main.jpg)-->
-[x](https://github.com/sulaiman-allen/nestlr/blob/master/img/SiteResources/Main.jpg)
+![](https://github.com/sulaiman-allen/nestlr/blob/master/img/SiteResources/Main.jpg)

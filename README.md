@@ -6,7 +6,23 @@ Simply scan a barcode with the nestlr phone app and watch as information about y
 media appears in real time in the web app (your nest). Depending upon the type of media scanned,
 different information is displayed. 
 
-![](./img/SiteResources/Main.jpg)
+<p align="center">
+  <img src="./img/SiteResources/Main.jpg">
+</p>
+
+###Features:
+nestlr can be used not only for cataloging things that are owned, but also for possible purchase considerations.
+With the owned vs. unowned feature, the user can quickly see online prices for the item in question. By default, 
+when an item is scanned, it defaults to being unowned.
+
+<p align="center">
+  <img src="./img/SiteResources/ShellUnOwned.jpg">
+</p>
+
+Simply click the owned button to hide the retailer info
+<p align="center">
+  <img src="./img/SiteResources/ShellOwned.jpg">
+</p>
 
 ###Technical details:
 The nestlr phone app is written in Java (source available [here](https://github.com/sulaiman-allen/nestlr-android)).

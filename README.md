@@ -6,6 +6,8 @@ Simply scan a barcode with the nestlr phone app and watch as information about y
 media appears in real time in the web app (your nest). Depending upon the type of media scanned,
 different information is displayed. 
 
+![](./img/SiteResources/Main.jpg)
+
 ###Technical details:
 The nestlr phone app is written in Java (source available [here](https://github.com/sulaiman-allen/nestlr-android)).
 It makes use of the Google [z-xing](https://github.com/zxing/zxing) (zebras crossing) library for scanning barcodes/QR codes.
@@ -16,4 +18,7 @@ call to upcite, another api call is made to Amazon via the asin tag that is retu
 images. If the media item is a book, another call is made to Google Books for information about author, rating, page count etc.
 The final step is to post the object to firebase.
 
-The nestlr web app is written in AngularJs and makes REST calls to firebase for database retrieval. 
+The nestlr web app is written in AngularJs and makes REST calls to firebase for database retrieval.
+<!--(./img/SiteResources/Main.jpg)-->
+<!--![](https://github.com/sulaiman-allen/nestlr/blob/master/img/SiteResources/Main.jpg)-->
+

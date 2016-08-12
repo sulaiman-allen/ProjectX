@@ -4,12 +4,15 @@ var Catalog = angular.module('catalog', ['ngRoute','ui.bootstrap', 'angular.filt
 
 Catalog.config(($routeProvider) => {
 
-  firebase.initializeApp({
-    apiKey: "AIzaSyCSJtE8Eh9Lx1TylzCIg3xmG-HKY6ybxFk",
-    authDomain: "catalogr-52a59.firebaseapp.com",
-    databaseURL: "https://catalogr-52a59.firebaseio.com",
-    storageBucket: "catalogr-52a59.appspot.com",
-  });
+  // To Use this app, create a firebase instance and copy your init here or in a file called
+  // "firebase-auth.js" in the "javascripts" folder of the root directory
+
+  // firebase.initializeApp({
+  //   apiKey: "#########################################",
+  //   authDomain: "#####################################",
+  //   databaseURL: "####################################",
+  //   storageBucket: "##################################",
+  // });
 
   $routeProvider
   .when('/', {

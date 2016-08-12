@@ -2,3 +2,4 @@
 Thumbs.db
 node_modules
 bower_components
+javascripts/firebase-auth.js

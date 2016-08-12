@@ -15,17 +15,14 @@ nestlr can be used not only for cataloging things that are owned, but also for t
 With the owned vs. unowned feature, the user can quickly see online prices for the item in question. By default, 
 when an item is scanned, it defaults to being unowned.
 
-<p align="left">
+<p align="center">
   <img src="./img/SiteResources/ShellUnOwned.jpg">
 </p>
-<p align="right">
-  <img src="./img/SiteResources/ShellOwned.jpg">
-</p>
-<!--![](./img/SiteResources/ShellUnOwned.jpg)-->
 
 Simply click the owned button to hide the retailer info
-
-![](./img/SiteResources/ShellOwned.jpg)
+<p align="center">
+  <img src="./img/SiteResources/ShellOwned.jpg">
+</p>
 
 ###Technical details:
 The nestlr phone app is written in Java (source available [here](https://github.com/sulaiman-allen/nestlr-android)).

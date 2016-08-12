@@ -8,6 +8,17 @@ different information is displayed.
 
 ![](./img/SiteResources/Main.jpg)
 
+###Features:
+nestlr can be used not only for cataloging things that are owned, but also for things you are considering buying.
+With the owned vs. unowned feature, the user can quickly see online prices for the item in question. By default, 
+when an item is scanned, it defaults to being unowned.
+
+![](./img/SiteResources/ShellUnOwned.jpg)
+
+Simply click the owned button to hide the retailer info
+
+![](./img/SiteResources/ShellOwned.jpg)
+
 ###Technical details:
 The nestlr phone app is written in Java (source available [here](https://github.com/sulaiman-allen/nestlr-android)).
 It makes use of the Google [z-xing](https://github.com/zxing/zxing) (zebras crossing) library for scanning barcodes/QR codes.

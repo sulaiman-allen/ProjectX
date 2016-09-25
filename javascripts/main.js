@@ -139,35 +139,22 @@ Catalog.config(($routeProvider) => {
 
   main.showBook = function(isbn) { 
 
-    console.log(`isbn = ${isbn}`);
+    // console.log(`isbn = ${isbn}`);
 
-    let bookModal = $uibModal.open({
+    // let bookModal = $uibModal.open({
+    $uibModal.open({
       animation: true,
       templateUrl: '/main/bookmodal',
       controller: 'ModalInstanceCtrl',
-      size: 'lg',
-      resolve: {
-        id: function () {
-          console.log(`isbn = ${isbn}`);
-          return isbn;
-        }
-      }
-    });
-    bookModal.result.then(function (selectedItem) {
-
-      // google.books.load();
-
-      // function initialize() {
-      //   var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-      //   viewer.load('ISBN:0738531367');
+      size: 'lg'
+      // size: 'lg',
+      // resolve: {
+      //   id: function () {
+      //     console.log(`isbn = ${isbn}`);
+      //     return isbn;
+      //   }
       // }
-
-      // google.books.setOnLoadCallback(initialize);
-
-      console.log(`selectedItem = ${selectedItem}`);
-      }, function () {
-          // console.log('Modal dismissed at: ' + new Date());
-      });
+    });
   };
 
   
@@ -214,6 +201,19 @@ Catalog.config(($routeProvider) => {
 .controller('ModalInstanceCtrl', function ($uibModalInstance, $scope, id) {
 
   $scope.test = "this should work now";
+
+  $scope.bookfunction = function() {
+    console.log("Atleast show this");
+    google.books.load();
+
+      function initialize() {
+        var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+        viewer.load(id);
+      }
+
+      google.books.setOnLoadCallback(initialize);
+      // console.log(`id = ${id}`);
+    };
 
 
   $scope.ok = function () {
